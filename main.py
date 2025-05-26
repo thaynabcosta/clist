@@ -1,3 +1,5 @@
+from storage import salvar_tarefas
+
 # Exibição do Menu
 print(" == M E N U ==")
 print("1. Adicionar tarefa")
@@ -11,5 +13,9 @@ escolha = True
 while escolha:
     opcao = int(input("Escolha: "))
 
-    if opcao == 5:
+    if opcao == 1:
+        tarefa_nova = input("Digite a tarefa: ")
+        salvar_tarefas(tarefa_nova)
+
+    elif opcao == 5:
         escolha = False
