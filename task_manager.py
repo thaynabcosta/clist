@@ -44,5 +44,16 @@ def listar():
         print(f"{task["id"]} {status_emoji} {task["descricao"]}")
 
 
-def concluir():
-    pass
+def concluir(indice_task:int):
+    """Concluí tarefas a partir de um índice, alterando seu status de "pendente" para "concluída"
+
+    Args:
+        indice_task (int): índice da tarefa a ser concluída
+    """
+    tasks = carregar_tarefas()
+    for task in tasks:
+        if task["id"] == indice_task:
+            task["status"] = "concluída"
+        break
+    salvar_tarefas(tasks)
+    
