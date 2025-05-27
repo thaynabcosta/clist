@@ -36,7 +36,12 @@ def remover(indice_tarefa: int):
         
 
 def listar():
-    pass
+    """Lista todas as tarefas armazenadas no arquivo tasks.json, mostrando seu ID e status
+    """
+    tasks = carregar_tarefas()
+    for task in tasks:
+        status_emoji = "✅" if task["status"] == "concluída" else "❌"
+        print(f"{task["id"]} {status_emoji} {task["descricao"]}")
 
 
 def concluir():
