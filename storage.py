@@ -17,13 +17,11 @@ def carregar_tarefas():
     return []
 
 
-def salvar_tarefas(nova_tarefa: str):
-    """Adiciona uma nova tarefa à lista existente e salva no arquivo 'tasks.json'.
+def salvar_tarefas(tasks: list):
+    """Salva as tarefas e alterações feitas no arquivo tasks.json.
 
     Args:
-        nova_tarefa (str): A tarefa que será adicionada à lista.
+        tasks (list): Lista de tarefas a serem salvas. 
     """
-    tasks = carregar_tarefas()
-    tasks.append(nova_tarefa)
     with open("tasks.json", "w", encoding='utf-8') as f:
         json.dump(tasks, f, indent=4, ensure_ascii=False)
