@@ -6,18 +6,23 @@ def adicionar(descricao: str):
     Args:
         descricao (str): descrição da tarefa a ser adicionada
     """
-    tasks = carregar_tarefas()
+    try:
+        tasks = carregar_tarefas()
 
-    ids = [t['id'] for t in tasks]
-    proximo_id = max(ids) + 1 if ids else 1
+        ids = [t['id'] for t in tasks]
+        proximo_id = max(ids) + 1 if ids else 1
 
-    nova_tarefa = {
-        "id": proximo_id,
-        "descricao": descricao,
-        "status": "pendente"
-    }
-    tasks.append(nova_tarefa)
-    salvar_tarefas(tasks)
+        nova_tarefa = {
+            "id": proximo_id,
+            "descricao": descricao,
+            "status": "pendente"
+        }
+        tasks.append(nova_tarefa)
+        salvar_tarefas(tasks)
+        print("Tarefa adicionada com sucesso!")
+    except Exception as e:
+        print("Erro inesperado ao tentar adicionar tarefa")
+
 
 
 def remover(indice_tarefa: int):
@@ -26,12 +31,23 @@ def remover(indice_tarefa: int):
     Args:
         indice_tarefa (int): índice da tarefa a ser excluída
     """
-    tasks = carregar_tarefas()
-    for task in tasks:
-        if task["id"] == indice_tarefa:
-            tasks.remove(task)
-            break
-    salvar_tarefas(tasks)
+    try:
+        tasks = carregar_tarefas()
+        encontrada = False
+        
+        for task in tasks:
+            if task["id"] == indice_tarefa:
+                tasks.remove(task)
+                encontrada = True
+                break
+
+        if encontrada:
+            salvar_tarefas(tasks)
+            print("Tarefa removida com sucesso!")
+        else:
+            print("Não foi possível remover tarefa! Indíce inexistente.")
+    except Exception as e:
+        print(f"Erro inesperado ao tentar remover tarefa: {e}")
         
 
 def listar():
@@ -49,10 +65,22 @@ def concluir(indice_task:int):
     Args:
         indice_task (int): índice da tarefa a ser concluída
     """
-    tasks = carregar_tarefas()
-    for task in tasks:
-        if task["id"] == indice_task:
-            task["status"] = "concluída"
-        break
-    salvar_tarefas(tasks)
+    try: 
+        tasks = carregar_tarefas()
+        encontrada = False
+
+        for task in tasks:
+            if task.get("id") == indice_task:
+                task["status"] = "concluída"
+                encontrada = True
+                break
+        
+        if encontrada:
+            salvar_tarefas(tasks)
+            print("Tarefa concluída com sucesso")
+        else:
+            print("Tarefa não encontrada!")
+
+    except Exception as e:
+        print(f"Erro inesperado ao tentar concluir tarefa: {e}")
     
