@@ -1,4 +1,5 @@
 from storage import salvar_tarefas, carregar_tarefas
+from utils import buscar_tarefas
 
 def adicionar(descricao: str):
     """Adiciona uma nova tarefa à lista existente e salva no arquivo 'tasks.json'
@@ -33,12 +34,11 @@ def remover(indice_tarefa: int):
     """
     try:
         tasks = carregar_tarefas()
-        encontrada = False
+        encontrada = buscar_tarefas(indice_tarefa, tasks)
         
         for task in tasks:
             if task["id"] == indice_tarefa:
                 tasks.remove(task)
-                encontrada = True
                 break
 
         if encontrada:
@@ -67,12 +67,11 @@ def concluir(indice_task:int):
     """
     try: 
         tasks = carregar_tarefas()
-        encontrada = False
+        encontrada = buscar_tarefas(indice_task, tasks)
 
         for task in tasks:
             if task.get("id") == indice_task:
                 task["status"] = "concluída"
-                encontrada = True
                 break
         
         if encontrada:
