@@ -7,3 +7,11 @@ def buscar_tarefas(id, tasks):
             break
     
     return encontrada
+
+def formatar_tarefa(id, status, descricao):
+    print(f"{id} {status} {descricao}")
+
+def exibir_quantidades(pendentes, concluidas):
+    print("== E S T A T Í S T I C A S ==")
+    print(f"Número de tarefas pendentes ❌: {pendentes}")
+    print(f"Número de tarefas concluídas ✅: {concluidas}")

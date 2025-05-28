@@ -1,5 +1,5 @@
-from storage import salvar_tarefas, carregar_tarefas
-from utils import buscar_tarefas
+from storage import salvar_tarefas, carregar_tarefas, pendentes_e_concluidas
+from utils import buscar_tarefas, formatar_tarefa, exibir_quantidades
 
 def adicionar(descricao: str):
     """Adiciona uma nova tarefa à lista existente e salva no arquivo 'tasks.json'
@@ -56,8 +56,10 @@ def listar():
     tasks = carregar_tarefas()
     for task in tasks:
         status_emoji = "✅" if task["status"] == "concluída" else "❌"
-        print(f"{task["id"]} {status_emoji} {task["descricao"]}")
+        formatar_tarefa(task["id"], status_emoji, task["descricao"])
 
+    tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
+    exibir_quantidades(tasks_pendentes, tasks_concluidas)
 
 def concluir(indice_task:int):
     """Concluí tarefas a partir de um índice, alterando seu status de "pendente" para "concluída"

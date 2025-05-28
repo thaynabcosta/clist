@@ -1,4 +1,5 @@
 import json
+import shutil
 import os
 
 def carregar_tarefas():
@@ -23,5 +24,23 @@ def salvar_tarefas(tasks: list):
     Args:
         tasks (list): Lista de tarefas a serem salvas. 
     """
+    path = f"{os.getcwd()}/tasks.json"
+    if os.path.exists(path):
+        backup_file = path.replace(".json","_backup.json")
+        shutil.copy(path, backup_file)
+    
     with open("tasks.json", "w", encoding='utf-8') as f:
         json.dump(tasks, f, indent=4, ensure_ascii=False)
+
+
+def pendentes_e_concluidas(tasks):
+    pendentes = 0
+    concluidas = 0
+    for task in tasks:
+        if task["status"] == "concluída":
+            concluidas += 1
+        else:
+            pendentes += 1
+    
+    return pendentes, concluidas
+            
