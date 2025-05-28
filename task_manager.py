@@ -1,5 +1,4 @@
 from storage import salvar_tarefas, carregar_tarefas
-import json
 
 def adicionar(descricao: str):
     """Adiciona uma nova tarefa à lista existente e salva no arquivo 'tasks.json'
