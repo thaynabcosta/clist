@@ -27,10 +27,10 @@ def main():
             
             elif opcao == 2:
                 listar()
-
             elif opcao == 3:
                 indice_tarefa = int(input("Digite o índice da tarefa que deseja concluir: "))
                 concluir(indice_tarefa)
+
 
             elif opcao == 4:
                 tarefa_removida = int(input("Digite o índice da tarefa a ser removida: "))
@@ -45,7 +45,9 @@ def main():
         except ValueError:
             print("Opção inexistente. Tente um número entre 1 e 5")
 
+        menu()
 
+        
 if __name__ == "__main__":
     main()
     
