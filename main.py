@@ -11,6 +11,12 @@ def menu():
     print("5. Editar tarefa")
     print("6. Sair")
 
+def menu_listagem():
+    print("==F I L T R O   T A R E F A S==")
+    print("1. Todas")
+    print("2. Pendentes")
+    print("3. Concluídas")
+    print("4. Voltar ao menu inicial")
 
 def main():
 
@@ -27,7 +33,23 @@ def main():
                 adicionar(nova_tarefa)
             
             elif opcao == 2:
-                listar()
+                escolha_filtro = True
+                try:                
+                    while escolha_filtro:
+                        menu_listagem()
+                        filtro = int(input("Digite o índice do filtro desejado: "))
+                        if filtro == 1:
+                            listar(filtro)
+                        elif filtro == 2:
+                            listar(filtro)
+                        elif filtro == 3:
+                            listar(filtro)
+                        elif filtro == 4:
+                            escolha_filtro = False
+                        else:
+                            print("Digite um valor válido[1-4]:")
+                except Exception as e:
+                    print(f"Erro inesperado ao selecionar filtro de listagem: {e}")
 
             elif opcao == 3:
                 indice_tarefa = int(input("Digite o índice da tarefa que deseja concluir: "))

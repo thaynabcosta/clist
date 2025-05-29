@@ -50,16 +50,34 @@ def remover(indice_tarefa: int):
         print(f"Erro inesperado ao tentar remover tarefa: {e}")
         
 
-def listar():
+def listar(filtro: int):
     """Lista todas as tarefas armazenadas no arquivo tasks.json, mostrando seu ID e status
     """
-    tasks = carregar_tarefas()
-    for task in tasks:
-        status_emoji = "✅" if task["status"] == "concluída" else "❌"
-        formatar_tarefa(task["id"], status_emoji, task["descricao"])
+    try:
+        tasks = carregar_tarefas()
 
-    tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
-    exibir_quantidades(tasks_pendentes, tasks_concluidas)
+        if filtro == 1: 
+            for task in tasks:
+                status_emoji = "✅" if task["status"] == "concluída" else "❌"
+                formatar_tarefa(task["id"], status_emoji, task["descricao"])
+
+            tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
+            exibir_quantidades(tasks_pendentes, tasks_concluidas)
+
+        elif filtro == 2:
+            for task in tasks:
+                if task["status"] == "pendente":
+                    status_emoji = "❌"
+                    formatar_tarefa(task["id"], status_emoji, task["descricao"])
+                
+        elif filtro == 3:
+            for task in tasks:
+                if task["status"] == "concluída":
+                    status_emoji = "✅"
+                    formatar_tarefa(task["id"], status_emoji, task["descricao"])
+
+    except Exception as e:
+        print(f"Erro ao filtrar tarefas")
 
 def concluir(indice_task:int):
     """Concluí tarefas a partir de um índice, alterando seu status de "pendente" para "concluída"
