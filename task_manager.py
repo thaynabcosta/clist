@@ -36,9 +36,9 @@ def remover(indice_tarefa: int):
         tasks = carregar_tarefas()
         encontrada = buscar_tarefas(indice_tarefa, tasks)
         
-        for task in tasks:
+        for i, task in enumerate(tasks):
             if task["id"] == indice_tarefa:
-                tasks.remove(task)
+                del tasks[i]
                 break
 
         if encontrada:
