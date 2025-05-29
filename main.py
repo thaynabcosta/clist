@@ -1,4 +1,4 @@
-from task_manager import adicionar, remover, listar, concluir
+from task_manager import adicionar, remover, listar, concluir, editar
 
 def menu():
     """Exibição do Menu
@@ -8,7 +8,8 @@ def menu():
     print("2. Listar tarefas")
     print("3. Concluir tarefa")
     print("4. Remover tarefa")
-    print("5. Sair")
+    print("5. Editar tarefa")
+    print("6. Sair")
 
 
 def main():
@@ -27,6 +28,7 @@ def main():
             
             elif opcao == 2:
                 listar()
+
             elif opcao == 3:
                 indice_tarefa = int(input("Digite o índice da tarefa que deseja concluir: "))
                 concluir(indice_tarefa)
@@ -37,10 +39,13 @@ def main():
                 remover(tarefa_removida)
 
             elif opcao == 5:
-                escolha = False
+                tarefa_editada = int(input("Digite o índice da tarefa a ser editada: "))
+                nova_descricao = input("Digite a atualização: ")
+                editar(tarefa_editada, nova_descricao)
 
-            elif opcao > 5:
-                print("Opção inxistente. Tente outra entre [1-5]")
+            elif opcao == 6:
+                escolha = False
+                
             
         except ValueError:
             print("Opção inexistente. Tente um número entre 1 e 5")
@@ -49,7 +54,9 @@ def main():
 
         
 if __name__ == "__main__":
-    main()
-    
+    try:
+        main()
+    except Exception as e:
+        print(f"Erro: {e}")
 
        

@@ -85,3 +85,24 @@ def concluir(indice_task:int):
     except Exception as e:
         print(f"Erro inesperado ao tentar concluir tarefa: {e}")
     
+def editar(indice, nova_descricao):
+        
+    try:
+        tasks = carregar_tarefas()
+        encontrada = buscar_tarefas(indice, tasks)
+        
+        for task in tasks:
+            if task["id"] == indice:
+                task["descricao"] = nova_descricao
+                break
+
+        if encontrada:
+            salvar_tarefas(tasks)
+            print("Tarefa atualizada com sucesso!")
+
+        else:
+            print("Não foi possível atualizar tarefa pois índice é inexistente!")
+    
+    except Exception as e:
+        print(f"Erro inesperado ao tentar atualizar tarefa: {e}")
+            
