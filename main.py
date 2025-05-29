@@ -13,6 +13,8 @@ def menu():
     print("6. Sair")
 
 def menu_listagem():
+    """Exibição do Menu de Filtros
+    """
     print("==F I L T R O   T A R E F A S==")
     print("1. Todas")
     print("2. Pendentes")
