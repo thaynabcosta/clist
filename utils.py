@@ -15,3 +15,10 @@ def exibir_quantidades(pendentes, concluidas):
     print("== E S T A T Í S T I C A S ==")
     print(f"Número de tarefas pendentes ❌: {pendentes}")
     print(f"Número de tarefas concluídas ✅: {concluidas}")
+
+def input_inteiro(escolha: str) -> int:
+    try:
+        valor = int(input(escolha))
+        return valor
+    except ValueError:
+        print("Opção inválida. Digite um número inteiro.")
