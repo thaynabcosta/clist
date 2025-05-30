@@ -1,10 +1,10 @@
 from task_manager import adicionar, remover, listar, concluir, editar
-from utils import input_inteiro
+from utils import input_inteiro, print_menu
 
 def menu():
     """Exibição do Menu
     """
-    print(" == M E N U ==")
+    print_menu("MENU PRINCIPAL")
     print("1. Adicionar tarefa")
     print("2. Listar tarefas")
     print("3. Concluir tarefa")
@@ -15,7 +15,9 @@ def menu():
 def menu_listagem():
     """Exibição do Menu de Filtros
     """
-    print("==F I L T R O   T A R E F A S==")
+    print("===============================")
+    print("¦        FILTRO TAREFAS       ¦")
+    print("===============================")
     print("1. Todas")
     print("2. Pendentes")
     print("3. Concluídas")
@@ -70,7 +72,7 @@ def main():
 
         elif opcao == 6:
             escolha = False
-        
+            break    
         else: 
             print("Opção inexistente!")
 
