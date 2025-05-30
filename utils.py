@@ -46,7 +46,7 @@ def msg_alerta(texto):
     print("="*50 + "\n")
 
 def msg_erro(label):
-    print(f"Erro inesperado ao tentar remover tarefa: {label}")
+    print(f"Erro inesperado: {label}")
 
 def sem_tarefa():
     print("Não há tarefas armazenadas!")
@@ -54,3 +54,17 @@ def sem_tarefa():
 def nao_encontrada():
      print("Não foi possível remover tarefa! Indíce inexistente.")
 
+def opcoes_menu(modelo):
+    if modelo == "principal":
+        print("1️⃣  Adicionar tarefa")
+        print("2️⃣  Listar tarefas")
+        print("3️⃣  Concluir tarefa")
+        print("4️⃣  Remover tarefa")
+        print("5️⃣  Editar tarefa")
+        print("6️⃣  Sair")
+        print("=" * 50)
+    elif modelo == "filtro":
+        print("1️⃣  Todas")
+        print("2️⃣  Pendentes")
+        print("3️⃣  Concluídas")
+        print("4️⃣  Voltar ao menu inicial")
