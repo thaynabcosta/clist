@@ -1,4 +1,4 @@
-from storage import salvar_tarefas, carregar_tarefas, pendentes_e_concluidas
+from storage import salvar_tarefas, carregar_tarefas, pendentes_e_concluidas, gerar_prox_id
 from utils import *
 
 def adicionar(descricao: str):
@@ -8,19 +8,24 @@ def adicionar(descricao: str):
         descricao (str): descrição da tarefa a ser adicionada
     """
     try:
+        if not descricao.strip():
+            msg_alerta("A descrição da tarefa não pode ser vazia!")
+            return
+        
         tasks = carregar_tarefas()
-
-        ids = [t['id'] for t in tasks]
-        proximo_id = max(ids) + 1 if ids else 1
+        id = gerar_prox_id(tasks)
 
         nova_tarefa = {
-            "id": proximo_id,
+            "id": id,
             "descricao": descricao,
             "status": "pendente"
         }
+
         tasks.append(nova_tarefa)
         salvar_tarefas(tasks)
         msg_info("Tarefa adicionada com sucesso!")
+
+        
     except Exception as e:
         msg_erro(e)
 

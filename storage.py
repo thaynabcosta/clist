@@ -43,4 +43,9 @@ def pendentes_e_concluidas(tasks):
             pendentes += 1
     
     return pendentes, concluidas
+
+def gerar_prox_id(tasks):
+    ids = [t['id'] for t in tasks]
+    proximo_id = max(ids) + 1 if ids else 1
+    return proximo_id
             
