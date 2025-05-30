@@ -1,5 +1,5 @@
 from storage import salvar_tarefas, carregar_tarefas, pendentes_e_concluidas
-from utils import buscar_tarefas, formatar_tarefa, exibir_quantidades
+from utils import *
 
 def adicionar(descricao: str):
     """Adiciona uma nova tarefa à lista existente e salva no arquivo 'tasks.json'
@@ -20,9 +20,9 @@ def adicionar(descricao: str):
         }
         tasks.append(nova_tarefa)
         salvar_tarefas(tasks)
-        print("Tarefa adicionada com sucesso!")
+        msg_info("Tarefa adicionada com sucesso!")
     except Exception as e:
-        print("Erro inesperado ao tentar adicionar tarefa")
+        msg_erro(e)
 
 
 
@@ -43,11 +43,11 @@ def remover(indice_tarefa: int):
 
         if encontrada:
             salvar_tarefas(tasks)
-            print("Tarefa removida com sucesso!")
+            msg_info("Tarefa removida com sucesso!")
         else:
-            print("Não foi possível remover tarefa! Indíce inexistente.")
+            msg_alerta("Não foi possível remover tarefa! Insira um índice válido.")
     except Exception as e:
-        print(f"Erro inesperado ao tentar remover tarefa: {e}")
+        msg_erro(e)
         
 
 def listar(filtro: int):
@@ -56,28 +56,34 @@ def listar(filtro: int):
     try:
         tasks = carregar_tarefas()
 
-        if filtro == 1: 
-            for task in tasks:
-                status_emoji = "✅" if task["status"] == "concluída" else "❌"
-                formatar_tarefa(task["id"], status_emoji, task["descricao"])
-
-            tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
-            exibir_quantidades(tasks_pendentes, tasks_concluidas)
-
-        elif filtro == 2:
-            for task in tasks:
-                if task["status"] == "pendente":
-                    status_emoji = "❌"
+        if tasks != []:
+            if filtro == 1: 
+                print_menu("TODAS AS TAREFAS")
+                for task in tasks:
+                    status_emoji = "✅" if task["status"] == "concluída" else "❌"
                     formatar_tarefa(task["id"], status_emoji, task["descricao"])
-                
-        elif filtro == 3:
-            for task in tasks:
-                if task["status"] == "concluída":
-                    status_emoji = "✅"
-                    formatar_tarefa(task["id"], status_emoji, task["descricao"])
+
+                tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
+                exibir_quantidades(tasks_pendentes, tasks_concluidas)
+
+            elif filtro == 2:
+                print_menu("TAREFAS PENDETES")
+                for task in tasks:
+                    if task["status"] == "pendente":
+                        status_emoji = "❌"
+                        formatar_tarefa(task["id"], status_emoji, task["descricao"])
+                    
+            elif filtro == 3:
+                print_menu("TAREFAS CONCLUÍDAS")
+                for task in tasks:
+                    if task["status"] == "concluída":
+                        status_emoji = "✅"
+                        formatar_tarefa(task["id"], status_emoji, task["descricao"])
+        else:
+            msg_alerta("Nenhuma tarefa na memória.")
 
     except Exception as e:
-        print(f"Erro ao filtrar tarefas")
+        msg_erro(e)
 
 def concluir(indice_task:int):
     """Concluí tarefas a partir de um índice, alterando seu status de "pendente" para "concluída"
@@ -96,12 +102,12 @@ def concluir(indice_task:int):
         
         if encontrada:
             salvar_tarefas(tasks)
-            print("Tarefa concluída com sucesso")
+            msg_info("Tarefa concluída com sucesso!")
         else:
-            print("Tarefa não encontrada!")
+            msg_alerta("Não foi possível concluir tarefa!Insira um índice válido.")
 
     except Exception as e:
-        print(f"Erro inesperado ao tentar concluir tarefa: {e}")
+        msg_erro(e)
     
 def editar(indice, nova_descricao):
         
@@ -116,11 +122,11 @@ def editar(indice, nova_descricao):
 
         if encontrada:
             salvar_tarefas(tasks)
-            print("Tarefa atualizada com sucesso!")
+            msg_info("Tarefa editada com sucesso!")
 
         else:
-            print("Não foi possível atualizar tarefa pois índice é inexistente!")
+            msg_alerta("Não foi possível editar tarefa!Insira um índice válido.")
     
     except Exception as e:
-        print(f"Erro inesperado ao tentar atualizar tarefa: {e}")
+        msg_erro()
             
