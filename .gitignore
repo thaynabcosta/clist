@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 *.json
+venv
 
 checklist.md
 
