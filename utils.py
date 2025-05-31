@@ -18,7 +18,15 @@ def buscar_tarefas(id: int, tasks: list) -> bool:
     
     return encontrada
 
-def formatar_tarefa(id, status, descricao):
+def formatar_tarefa(id: int, status: str, descricao: str):
+    """
+    Exibe uma tarefa formatada na saída padrão.
+
+    Args:
+        id (int): ID da tarefa.
+        status (str): Status da tarefa (pendente, concluída, etc.).
+        descricao (str): Descrição da tarefa.
+    """
     print(f"{id} {status} {descricao}")
 
 def exibir_quantidades(pendentes, concluidas):
