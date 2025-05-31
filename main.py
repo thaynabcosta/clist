@@ -2,14 +2,33 @@ from task_manager import adicionar, remover, listar, concluir, editar
 from utils import *
 
 def mostrar_menu_principal():
+    """
+    Exibe o menu principal com opções disponíveis ao usuário.
+    """
     print_menu("MENU")
     opcoes_menu("principal")
 
 def mostrar_menu_filtro():
+    """
+    Exibe o menu de filtros para visualização das tarefas.
+    """
     print_menu("FILTRO")
     opcoes_menu("filtro")
 
 def main():
+    """
+    Executa o loop principal do programa de gerenciamento de tarefas.
+    
+    Permite ao usuário:
+        1. Adicionar uma nova tarefa.
+        2. Listar tarefas com filtro (todas, pendentes, concluídas).
+        3. Concluir uma tarefa específica.
+        4. Remover uma tarefa existente.
+        5. Editar a descrição de uma tarefa.
+        6. Encerrar o programa.
+    
+    Trata exceções de entrada inválida e erros de execução.
+    """
 
     #Escolha do usuário
     while True:
