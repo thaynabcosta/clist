@@ -30,6 +30,13 @@ def formatar_tarefa(id: int, status: str, descricao: str):
     print(f"{id} {status} {descricao}")
 
 def exibir_quantidades(pendentes, concluidas):
+    """
+    Exibe a quantidade de tarefas pendentes e concluídas.
+
+    Args:
+        pendentes (int): Número de tarefas pendentes.
+        concluidas (int): Número de tarefas concluídas.
+    """
     print_menu("ESTATÍSTICAS")
     print(f"Número de tarefas pendentes ❌: {pendentes}")
     print(f"Número de tarefas concluídas ✅: {concluidas}")
