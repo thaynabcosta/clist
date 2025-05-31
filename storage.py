@@ -3,8 +3,8 @@ import shutil
 import os
 
 def carregar_tarefas():
-    """ Carrega e retorna a lista de tarefas do arquivo 'tasks.json'.
-    
+    """Carrega e retorna a lista de tarefas do arquivo 'tasks.json'.
+
     Returns:
         list: Lista de tarefas carregadas. Retorna uma lista vazia caso o arquivo não exista
         ou esteja vazio/inválido.
@@ -21,6 +21,8 @@ def carregar_tarefas():
 def salvar_tarefas(tasks: list):
     """Salva as tarefas e alterações feitas no arquivo tasks.json.
 
+    Antes de salvar, cria um backup automático do arquivo anterior.
+
     Args:
         tasks (list): Lista de tarefas a serem salvas. 
     """
@@ -33,7 +35,15 @@ def salvar_tarefas(tasks: list):
         json.dump(tasks, f, indent=4, ensure_ascii=False)
 
 
-def pendentes_e_concluidas(tasks):
+def pendentes_e_concluidas(tasks:list):
+    """Conta quantas tarefas estão pendentes e quantas estão concluídas.
+
+    Args:
+        tasks (list): Lista de tarefas.
+
+    Returns:
+        tuple: Quantidade de tarefas pendentes e concluídas (pendentes, concluidas).
+    """
     pendentes = 0
     concluidas = 0
     for task in tasks:
@@ -44,8 +54,15 @@ def pendentes_e_concluidas(tasks):
     
     return pendentes, concluidas
 
-def gerar_prox_id(tasks):
+def gerar_prox_id(tasks: list):
+    """Gera o próximo ID disponível com base na lista de tarefas.
+
+    Args:
+        tasks (list): Lista de tarefas existentes.
+
+    Returns:
+        int: Próximo ID único para nova tarefa.
+    """
     ids = [t['id'] for t in tasks]
     proximo_id = max(ids) + 1 if ids else 1
     return proximo_id
-            
