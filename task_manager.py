@@ -90,21 +90,23 @@ def concluir(indice_task:int):
     """
     try: 
         tasks = carregar_tarefas()
-        encontrada = buscar_tarefas(indice_task, tasks)
+
+        if not tasks:
+            msg_alerta("Não foi possível concluir tarefa!Insira um índice válido.")
 
         for task in tasks:
             if task.get("id") == indice_task:
                 task["status"] = "concluída"
+                salvar_tarefas(tasks)
+                msg_info("Tarefa concluída com sucesso!")
                 break
+            else:
+                msg_alerta("Tarefa não pôde ser concluída! Índice inexistente.")
         
-        if encontrada:
-            salvar_tarefas(tasks)
-            msg_info("Tarefa concluída com sucesso!")
-        else:
-            msg_alerta("Não foi possível concluir tarefa!Insira um índice válido.")
 
     except Exception as e:
         msg_erro(e)
+    
     
 def editar(indice, nova_descricao):
         
