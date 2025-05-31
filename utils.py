@@ -57,7 +57,13 @@ def input_inteiro(escolha: str) -> int:
     except ValueError:
         print("Opção inválida. Digite um número inteiro.")
 
-def print_menu(texto):
+def print_menu(texto: str):
+    """
+    Exibe um menu com bordas estilizadas e texto centralizado.
+
+    Args:
+        texto (str): Texto a ser exibido no centro do menu.
+    """
     width = 110
     border = "="*width
     empty_line = f"¦{' ' * (width - 2)}¦"
@@ -69,26 +75,56 @@ def print_menu(texto):
     print(empty_line)
     print(border)
 
-def msg_info(texto):
+def msg_info(texto: str):
+    """
+    Exibe uma mensagem informativa com destaque.
+
+    Args:
+        texto (str): Mensagem a ser exibida.
+    """
     print("\n" + "="*50)
     print(f"{texto}")
     print("="*50 + "\n")
 
-def msg_alerta(texto):
+def msg_alerta(texto: str):
+    """
+    Exibe uma mensagem de alerta com destaque.
+
+    Args:
+        texto (str): Mensagem de alerta.
+    """
     print("\n" + "="*50)
     print(f"{texto}")
     print("="*50 + "\n")
 
-def msg_erro(label):
+def msg_erro(label: str):
+    """
+    Exibe uma mensagem de erro.
+
+    Args:
+        label (str): Texto do erro a ser exibido.
+    """
     print(f"Erro inesperado: {label}")
 
 def sem_tarefa():
+    """
+    Informa que não há tarefas armazenadas.
+    """
     print("Não há tarefas armazenadas!")
 
 def nao_encontrada():
+     """
+    Informa que a tarefa a ser removida não foi encontrada.
+    """
      print("Não foi possível remover tarefa! Indíce inexistente.")
 
-def opcoes_menu(modelo):
+def opcoes_menu(modelo: str):
+    """
+    Exibe as opções do menu com base no modelo selecionado.
+
+    Args:
+        modelo (str): Tipo de menu ('principal' ou 'filtro').
+    """
     if modelo == "principal":
         print("1️⃣  Adicionar tarefa")
         print("2️⃣  Listar tarefas")
