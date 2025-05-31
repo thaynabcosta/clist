@@ -58,31 +58,26 @@ def listar(filtro: int):
     try:
         tasks = carregar_tarefas()
 
-        if tasks != []:
-            if filtro == 1: 
-                print_menu("TODAS AS TAREFAS")
-                for task in tasks:
-                    status_emoji = "✅" if task["status"] == "concluída" else "❌"
-                    formatar_tarefa(task["id"], status_emoji, task["descricao"])
+        if not tasks:
+            msg_alerta("Nenhuma tarefa na memória!")
 
-                tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
-                exibir_quantidades(tasks_pendentes, tasks_concluidas)
+        titulos = {1:"TODAS AS TAREFAS", 2:"TAREFAS PENDENTES", 3:"TAREFAS CONCLUÍDAS"}
+        print_menu(titulos.get(filtro, "LISTA DE TAREFAS"))
 
-            elif filtro == 2:
-                print_menu("TAREFAS PENDETES")
-                for task in tasks:
-                    if task["status"] == "pendente":
-                        status_emoji = "❌"
-                        formatar_tarefa(task["id"], status_emoji, task["descricao"])
-                    
-            elif filtro == 3:
-                print_menu("TAREFAS CONCLUÍDAS")
-                for task in tasks:
-                    if task["status"] == "concluída":
-                        status_emoji = "✅"
-                        formatar_tarefa(task["id"], status_emoji, task["descricao"])
-        else:
-            msg_alerta("Nenhuma tarefa na memória.")
+        for task in tasks:
+            status = task["status"]
+            status_emoji = "✅" if status == "concluída" else "❌" 
+
+            if filtro == 1:
+                formatar_tarefa(task["id"], status_emoji, task["descricao"])
+            elif filtro == 2 and status == "pendente":
+                formatar_tarefa(task["id"], status_emoji, task["descricao"])
+            elif filtro == 3 and status == "concluída":
+                formatar_tarefa(task["id"], status_emoji, task["descricao"])
+
+        if filtro == 1:
+            tasks_pendentes, tasks_concluidas = pendentes_e_concluidas(tasks)
+            exibir_quantidades(tasks_pendentes, tasks_concluidas)
 
     except Exception as e:
         msg_erro(e)
