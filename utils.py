@@ -1,4 +1,14 @@
-def buscar_tarefas(id, tasks):
+def buscar_tarefas(id: int, tasks: list) -> bool:
+    """
+    Verifica se uma tarefa com o ID especificado existe na lista de tarefas.
+
+    Args:
+        id (int): O ID da tarefa a ser buscada.
+        tasks (list): Lista de dicionários representando tarefas.
+
+    Returns:
+        bool: True se a tarefa for encontrada, False caso contrário.
+    """
     encontrada = False
 
     for task in tasks:
