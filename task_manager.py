@@ -25,7 +25,7 @@ def adicionar(descricao: str):
         salvar_tarefas(tasks)
         msg_info("Tarefa adicionada com sucesso!")
 
-        
+
     except Exception as e:
         msg_erro(e)
 
@@ -39,18 +39,15 @@ def remover(indice_tarefa: int):
     """
     try:
         tasks = carregar_tarefas()
-        encontrada = buscar_tarefas(indice_tarefa, tasks)
-        
-        for i, task in enumerate(tasks):
-            if task["id"] == indice_tarefa:
-                del tasks[i]
-                break
+        tarefa = next((t for t in tasks if t["id"] == indice_tarefa), None)
 
-        if encontrada:
-            salvar_tarefas(tasks)
-            msg_info("Tarefa removida com sucesso!")
-        else:
-            msg_alerta("Não foi possível remover tarefa! Insira um índice válido.")
+        if tarefa is None:
+            msg_alerta("Tarefa com ID inserido não encontrada.")
+        
+        tasks.remove(tarefa)
+        salvar_tarefas(tasks)
+        msg_info("Tarefa removida com sucesso!")
+    
     except Exception as e:
         msg_erro(e)
         
