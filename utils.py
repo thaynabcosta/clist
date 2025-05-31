@@ -42,6 +42,15 @@ def exibir_quantidades(pendentes, concluidas):
     print(f"Número de tarefas concluídas ✅: {concluidas}")
 
 def input_inteiro(escolha: str) -> int:
+    """
+    Solicita ao usuário um número inteiro e trata erros de entrada.
+
+    Args:
+        escolha (str): Texto a ser exibido no prompt de entrada.
+
+    Returns:
+        int: Valor inteiro inserido pelo usuário.
+    """
     try:
         valor = int(input(escolha))
         return valor
