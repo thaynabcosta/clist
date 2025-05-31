@@ -99,33 +99,32 @@ def concluir(indice_task:int):
                 task["status"] = "concluída"
                 salvar_tarefas(tasks)
                 msg_info("Tarefa concluída com sucesso!")
-                break
-            else:
-                msg_alerta("Tarefa não pôde ser concluída! Índice inexistente.")
+                return
+        msg_alerta("Tarefa não pôde ser concluída! Índice inexistente.")
         
 
     except Exception as e:
         msg_erro(e)
     
-    
+
 def editar(indice, nova_descricao):
         
     try:
         tasks = carregar_tarefas()
-        encontrada = buscar_tarefas(indice, tasks)
+
+        if not tasks:
+            msg_alerta("Nenhuma tarefa armazenado!")
         
         for task in tasks:
             if task["id"] == indice:
                 task["descricao"] = nova_descricao
-                break
+                salvar_tarefas(tasks)
+                msg_info("Tarefa editada com sucesso!")
+                return
 
-        if encontrada:
-            salvar_tarefas(tasks)
-            msg_info("Tarefa editada com sucesso!")
+        msg_alerta("Não foi possível editar tarefa! Insira um índice válido.")
+        
 
-        else:
-            msg_alerta("Não foi possível editar tarefa!Insira um índice válido.")
-    
     except Exception as e:
         msg_erro()
             
