@@ -61,6 +61,14 @@ Exibição apenas de tarefas pendentes
 Exibição apenas de tarefas concluídas
 ![Escolha tarefas concluídas](docs/imagens/exibicao_tarefas_concluidas.png)
 
+### Concluir Tarefas
+
+Escolhendo a opção 3 para concluir tarefas
+![Escolha concluir tarefas](docs/imagens/escolha_concluir.png)
+
+Digitar índice atribuído à tarefa na lista
+![Digitando índice da tarefa](docs/imagens/concluindo_tarefa.png)
+
 
 ## 🧱 Tecnologias Utilizadas
 
