@@ -30,7 +30,19 @@ python clist.py
 
 ## 💡 Exemplos de Uso
 
+### Adicionar Tarefa
 
+Menu inicial
+![Menu Inicial](docs/imagens/menu_inicial.png)
+
+Escolhendo a função adicionar
+![Adicionar](docs/imagens/escolha_adicionar.png)
+
+Digitando nova tarefa
+![Digitando tarefa](docs/imagens/digitar_tarefa.png)
+
+Tarefa adicionada com sucesso! Retorna o menu principal
+![Mensagem de sucesso ao adicionar tarefa](docs/imagens/tarefa_adicionada_com_sucesso.png)
 
 ## 🧱 Tecnologias Utilizadas
 
