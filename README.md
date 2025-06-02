@@ -44,6 +44,24 @@ Digitando nova tarefa
 Tarefa adicionada com sucesso! Retorna o menu principal
 ![Mensagem de sucesso ao adicionar tarefa](docs/imagens/tarefa_adicionada_com_sucesso.png)
 
+### Listar Tarefas
+
+Escolhendo opção 2 para listar tarefas
+![Escolha Listar](docs/imagens/escolha_listar.png)
+
+Menu filtro de exibição
+![Escolha Filtro](docs/imagens/escolha_filtro.png)
+
+Listar todas as tarefas
+![Escolha Todas as Tarefas](docs/imagens/filtro_todas_tarefas.png)
+
+Exibição apenas de tarefas pendentes
+![Escolha tarefas pendentes](docs/imagens/exibicao_tarefas_pendentes.png)
+
+Exibição apenas de tarefas concluídas
+![Escolha tarefas concluídas](docs/imagens/exibicao_tarefas_concluidas.png)
+
+
 ## 🧱 Tecnologias Utilizadas
 
 - Python 3.12+
