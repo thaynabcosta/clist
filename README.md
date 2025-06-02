@@ -69,6 +69,21 @@ Escolhendo a opção 3 para concluir tarefas
 Digitar índice atribuído à tarefa na lista
 ![Digitando índice da tarefa](docs/imagens/concluindo_tarefa.png)
 
+### Editar Tarefas
+
+Escolhendo a opção 5 para editar tarefas
+![Escolha editar tarefas](docs/imagens/escolha_editar.png)
+
+Digitando o índice da tarefa a ser editada, em seguida escrevendo a alteração
+![Editando tarefa](docs/imagens/editando_tarefa.png)
+
+### Remover Tarefas
+
+Escolhendo a opção 4 para remover tarefas
+![Escolha remover](docs/imagens/escolha_remover.png)
+
+Em seguida, digitando o índice da tarefa para excluir
+![Remover](docs/imagens/remover_tarefa.png)
 
 ## 🧱 Tecnologias Utilizadas
 
